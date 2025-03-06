@@ -140,19 +140,25 @@ class TileRecognitionGame {
       this.feedbackElement.innerHTML = isCorrect ? '✓' : '✕';
       this.feedbackElement.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
       
-      // Disable buttons temporarily
-      this.gameActive = false;
-      
-      // Update score if correct
       if (isCorrect) {
+        // Update score
         this.score++;
+        
+        // Disable buttons temporarily to prevent clicking during transition
+        this.gameActive = false;
+        
+        // Wait before showing next tile
+        setTimeout(() => {
+          this.gameActive = true;
+          this.displayNewTile();
+        }, 500);
+      } else {
+        // For incorrect answers, just clear the feedback after a brief period
+        // but keep the same tile displayed
+        setTimeout(() => {
+          this.feedbackElement.className = 'feedback';
+        }, 800);
       }
-      
-      // Wait before showing next tile (reduced from 1000ms to 500ms)
-      setTimeout(() => {
-        this.gameActive = true;
-        this.displayNewTile();
-      }, 500);
     }
   
     /**

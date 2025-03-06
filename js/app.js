@@ -1,50 +1,105 @@
-/**
- * Main application script for Mahjong Learning App
- */
+// Main application controller
+const App = {
+  // DOM elements
+  elements: {
+      homeScreen: document.getElementById('home-screen'),
+      tileRecognitionBtn: document.getElementById('tile-recognition-btn'),
+      puzzlesBtn: document.getElementById('puzzles-btn'),
+      scoringBtn: document.getElementById('scoring-btn')
+  },
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize game
-    const tileGame = new TileRecognitionGame();
-    
-    // DOM elements
-    const homeScreen = document.getElementById('home-screen');
-    const gameScreen = document.getElementById('tile-game-screen');
-    const tileRecognitionBtn = document.getElementById('tile-recognition-btn');
-    const closeBtn = document.querySelector('.close-btn');
-    
-    /**
-     * Navigate to a screen
-     * @param {HTMLElement} screen - The screen to navigate to
-     */
-    function navigateTo(screen) {
-      // Hide all screens
-      document.querySelectorAll('.screen').forEach(s => {
-        s.classList.remove('active');
+  // Game screens
+  games: {
+      tileRecognition: {
+          screen: document.getElementById('game-screen'),
+          closeBtn: document.getElementById('close-game'),
+          initialize: function() {
+              // This will be defined in tile-recognition-game.js
+              if (typeof TileRecognitionGame !== 'undefined') {
+                  TileRecognitionGame.init();
+              }
+          }
+      },
+      puzzles: {
+          screen: null, // Will be set when puzzles game is implemented
+          closeBtn: null,
+          initialize: function() {
+              // This will be defined in puzzles-game.js when implemented
+              if (typeof PuzzlesGame !== 'undefined') {
+                  PuzzlesGame.init();
+              }
+          }
+      },
+      scoringMath: {
+          screen: null, // Will be set when scoring math game is implemented
+          closeBtn: null,
+          initialize: function() {
+              // This will be defined in scoring-math-game.js when implemented
+              if (typeof ScoringMathGame !== 'undefined') {
+                  ScoringMathGame.init();
+              }
+          }
+      }
+  },
+
+  // Initialize the application
+  init: function() {
+      this.bindEvents();
+  },
+
+  // Bind all event listeners
+  bindEvents: function() {
+      // Tile Recognition game
+      this.elements.tileRecognitionBtn.addEventListener('click', () => {
+          this.openGame('tileRecognition');
       });
+
+      if (this.games.tileRecognition.closeBtn) {
+          this.games.tileRecognition.closeBtn.addEventListener('click', () => {
+              this.closeGame('tileRecognition');
+          });
+      }
+
+      // Puzzles game (future)
+      this.elements.puzzlesBtn.addEventListener('click', () => {
+          // Currently disabled - will be implemented in V2
+          // this.openGame('puzzles');
+      });
+
+      // Scoring Math game (future)
+      this.elements.scoringBtn.addEventListener('click', () => {
+          // Currently disabled - will be implemented in V2
+          // this.openGame('scoringMath');
+      });
+  },
+
+  // Open a specific game
+  openGame: function(gameName) {
+      // Hide home screen
+      this.elements.homeScreen.style.display = 'none';
       
-      // Show the target screen
-      screen.classList.add('active');
-    }
-    
-    // Event listeners for navigation
-    tileRecognitionBtn.addEventListener('click', () => {
-      navigateTo(gameScreen);
-      tileGame.init();
-    });
-    
-    closeBtn.addEventListener('click', () => {
-      navigateTo(homeScreen);
-      tileGame.reset();
-    });
-    
-    // Handle disabled buttons
-    document.querySelectorAll('.menu-button.disabled').forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Maybe add a small animation or feedback here
-      });
-    });
-    
-    // Start on home screen
-    navigateTo(homeScreen);
-  });
+      // Show the selected game screen
+      if (this.games[gameName].screen) {
+          this.games[gameName].screen.style.display = 'flex';
+          
+          // Initialize the game
+          this.games[gameName].initialize();
+      }
+  },
+
+  // Close a specific game and return to home screen
+  closeGame: function(gameName) {
+      // Hide the game screen
+      if (this.games[gameName].screen) {
+          this.games[gameName].screen.style.display = 'none';
+      }
+      
+      // Show home screen
+      this.elements.homeScreen.style.display = 'block';
+  }
+};
+
+// Initialize the app when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  App.init();
+});

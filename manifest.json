@@ -1,6 +1,6 @@
 {
-  "name": "Mahjong Learning App",
-  "short_name": "Mahjong App",
+  "name": "Mahjong Time",
+  "short_name": "Mahjong Time",
   "description": "An app to help players learn Mahjong tiles and improve their game skills",
   "start_url": "./index.html",
   "display": "standalone",

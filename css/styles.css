@@ -95,6 +95,16 @@
     text-transform: uppercase;
   }
   
+  .tile-icon {
+    width: 40px;
+    height: 50px;
+    background-color: var(--cream);
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin: 10px 0;
+  }
+  
   .menu-options {
     width: 100%;
     margin-top: 20px;
@@ -168,8 +178,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px 40px;
+    justify-content: flex-start;
+    padding: 10px 20px 120px; /* Increased bottom padding significantly */
+    margin-bottom: 60px; /* Increased bottom margin */
   }
   
   .tile {
@@ -299,5 +310,20 @@
     .tile {
       width: 100px;
       height: 140px;
+    }
+  }
+  
+  /* Mobile-specific adjustments */
+  @media (max-width: 767px) {
+    .game-content {
+      padding-bottom: 150px;
+    }
+    
+    .mobile-spacer {
+      height: 120px;
+    }
+    
+    .answer-buttons {
+      margin-bottom: 30px;
     }
   }

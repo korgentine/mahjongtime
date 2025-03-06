@@ -148,7 +148,7 @@ class TileRecognitionGame {
         this.score++;
       }
       
-      // Wait before showing next tile
+      // Wait before showing next tile (reduced from 1000ms to 500ms)
       setTimeout(() => {
         this.gameActive = true;
         this.displayNewTile();

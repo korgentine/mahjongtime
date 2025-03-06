@@ -249,3 +249,63 @@ body {
       font-size: 16px;
   }
 }
+
+/* Mobile viewport fixes */
+
+/* Use viewport height with fallbacks for iOS Safari */
+html, body {
+  height: 100%;
+  height: -webkit-fill-available;
+}
+
+/* Apply safe area insets for notches, home indicators, etc. */
+body {
+  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 0);
+}
+
+/* Ensure container adapts to available space */
+.container {
+  min-height: 100%;
+  max-height: -webkit-fill-available;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0));
+  position: relative;
+}
+
+/* Position answer options with absolute positioning to ensure visibility */
+.answer-options {
+  position: absolute;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0));
+  left: 20px;
+  right: 20px;
+}
+
+/* Adjust tile container to accommodate absolute positioned answer options */
+.tile-container {
+  margin-bottom: 200px; /* Add space for the answer options */
+}
+
+/* Add bottom padding to home screen buttons to prevent cutoff */
+.menu-options {
+  margin-bottom: calc(40px + env(safe-area-inset-bottom, 20px));
+}
+
+/* Add styles for browser toolbar visibility */
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific styles */
+  .container {
+      padding-top: env(safe-area-inset-top, 20px);
+  }
+}
+
+/* Chrome mobile adjustments */
+@media screen and (max-height: 700px) {
+  .tile {
+      width: 100px;
+      height: 140px;
+      margin-top: -20px; /* Move tile up slightly on smaller screens */
+  }
+  
+  .answer-options {
+      bottom: calc(40px + env(safe-area-inset-bottom, 20px)); /* More bottom padding for Chrome toolbar */
+  }
+}

@@ -21,7 +21,6 @@
     max-width: 500px;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
   }
@@ -31,6 +30,8 @@
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -38,8 +39,6 @@
     transition: opacity 0.3s ease;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
   }
   
   .screen.active {
@@ -334,26 +333,38 @@
   
   /* iOS Safari specific fixes */
   @supports (-webkit-touch-callout: none) {
-    /* Fix for home screen web app */
-    html {
-      height: -webkit-fill-available;
-    }
-    
-    body {
-      min-height: -webkit-fill-available;
-      height: -webkit-fill-available;
-    }
-    
+    /* PWA specific fixes for iOS */
     .screen {
-      height: -webkit-fill-available;
-      padding-top: env(safe-area-inset-top, 0);
+      /* Add padding to account for the status bar */
+      padding-top: env(safe-area-inset-top, 20px);
     }
     
     .game-header {
-      padding-top: calc(20px + env(safe-area-inset-top, 0));
+      /* Ensure header is visible with proper padding */
+      margin-top: env(safe-area-inset-top, 0);
     }
     
+    /* Fix for home screen button */
     .answer-buttons, .special-options {
       padding-bottom: calc(20px + env(safe-area-inset-bottom, 20px));
+      margin-bottom: env(safe-area-inset-bottom, 20px);
+    }
+    
+    /* Home screen specific styling */
+    @media (display-mode: standalone) {
+      body {
+        /* Ensure body takes full height in standalone mode */
+        height: 100vh;
+      }
+      
+      .screen.active {
+        /* Adjust for status bar in standalone mode */
+        padding-top: env(safe-area-inset-top, 20px);
+      }
+      
+      .game-header {
+        /* More padding in standalone mode */
+        padding-top: calc(20px + env(safe-area-inset-top, 20px));
+      }
     }
   }

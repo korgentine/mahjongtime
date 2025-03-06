@@ -126,18 +126,15 @@ class TileRecognitionGame {
       
       // Check if answer is correct based on tile type
       if (this.currentTile.type === TILE_TYPES.NUMBER) {
-        // For number tiles, check if the number matches
         isCorrect = userAnswer === this.currentTile.value;
       } else if (this.currentTile.type === TILE_TYPES.DRAGON) {
-        // For dragon tiles, the answer should be 'dragon'
         isCorrect = userAnswer === 'dragon';
       } else if (this.currentTile.type === TILE_TYPES.WIND) {
-        // For wind tiles, check if the wind direction matches
         isCorrect = userAnswer === this.currentTile.value;
       }
       
       // Show feedback
-      this.feedbackElement.innerHTML = isCorrect ? '✓' : '✕';
+      this.feedbackElement.innerHTML = `<img src="assets/icons/${isCorrect ? 'check' : 'cross'}.svg" alt="${isCorrect ? 'Correct' : 'Incorrect'}" />`;
       this.feedbackElement.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
       
       if (isCorrect) {
@@ -157,7 +154,7 @@ class TileRecognitionGame {
         // but keep the same tile displayed
         setTimeout(() => {
           this.feedbackElement.className = 'feedback';
-        }, 800);
+        }, 600);
       }
     }
   

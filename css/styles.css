@@ -231,8 +231,8 @@
   }
   
   .feedback {
-    height: 60px;
-    width: 60px;
+    height: 80px;
+    width: 80px;
     margin: 20px 0;
     border-radius: 50%;
     display: flex;
@@ -244,15 +244,21 @@
   }
   
   .feedback.correct {
-    background-color: var(--light-green);
     opacity: 1;
-    color: white;
   }
   
   .feedback.incorrect {
-    background-color: var(--red);
     opacity: 1;
-    color: white;
+  }
+  
+  .feedback img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .feedback.correct img,
+  .feedback.incorrect img {
+    opacity: 1;
   }
   
   .answer-buttons {

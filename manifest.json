@@ -1,0 +1,22 @@
+{
+    "name": "Mahjong Learning App",
+    "short_name": "Mahjong App",
+    "description": "Learn Mahjong tile recognition and more",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#003300",
+    "theme_color": "#003300",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "assets/icons/icon-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "assets/icons/icon-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+  }

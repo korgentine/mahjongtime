@@ -1,0 +1,303 @@
+/* Main Styles */
+:root {
+    --bg-green: #003300;
+    --light-green: #4caf50;
+    --cream: #fffbe6;
+    --red: #d32f2f;
+  }
+  
+  body {
+    background-color: var(--bg-green);
+    color: var(--cream);
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 100%;
+    height: 100vh;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Screen Management */
+  .screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .screen.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Home Screen */
+  .border-pattern {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .border-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 20px solid transparent;
+    border-image: repeating-linear-gradient(45deg, var(--light-green), var(--light-green) 10px, transparent 10px, transparent 20px, var(--light-green) 20px) 20;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    z-index: 2;
+    position: relative;
+  }
+  
+  h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: var(--cream);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+  
+  .menu-options {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .menu-button {
+    position: relative;
+    padding: 15px;
+    background-color: var(--light-green);
+    color: white;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .menu-button:active {
+    transform: translateY(2px);
+  }
+  
+  .menu-button.disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+  
+  .coming-soon {
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.8;
+    color: white;
+  }
+  
+  .button-text {
+    text-transform: uppercase;
+  }
+  
+  /* Tile Game Screen */
+  .game-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .close-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .game-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px 40px;
+  }
+  
+  .tile {
+    width: 120px;
+    height: 160px;
+    background-color: var(--cream);
+    border-radius: 8px;
+    margin: 20px auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .tile::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    width: 120px;
+    height: 160px;
+    background-color: var(--cream);
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0.8;
+  }
+  
+  .tile::before {
+    content: '';
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 120px;
+    height: 160px;
+    background-color: var(--cream);
+    border-radius: 8px;
+    z-index: -2;
+    opacity: 0.6;
+  }
+  
+  .tile img {
+    max-width: 60%;
+    max-height: 60%;
+  }
+  
+  .feedback {
+    height: 60px;
+    width: 60px;
+    margin: 20px 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .feedback.correct {
+    background-color: var(--light-green);
+    opacity: 1;
+    color: white;
+  }
+  
+  .feedback.incorrect {
+    background-color: var(--red);
+    opacity: 1;
+    color: white;
+  }
+  
+  .answer-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  
+  .answer-button {
+    background-color: var(--light-green);
+    color: white;
+    padding: 15px 10px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .answer-button:active {
+    transform: scale(0.98);
+  }
+  
+  /* For the special tiles (dragon, wind) */
+  .special-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .dragon-button-wrapper {
+    width: 100%;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .directions-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  @media (max-width: 380px) {
+    h1 {
+      font-size: 3rem;
+    }
+    
+    .tile {
+      width: 100px;
+      height: 140px;
+    }
+  }

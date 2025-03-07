@@ -308,9 +308,9 @@ body {
   border-radius: 10px;
   margin: 10px 0 20px;
   overflow: visible;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  /* Removed sticky positioning */
+  position: relative;
+  z-index: 5;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
@@ -366,6 +366,55 @@ body {
   }
 }
 
+/* Center label with lines */
+.center-label {
+  color: var(--button-green);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  margin: 25px 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-label::before,
+.center-label::after {
+  content: '';
+  height: 1px;
+  background-color: var(--button-green);
+  flex-grow: 1;
+  opacity: 0.5;
+  margin: 0 15px;
+}
+
+/* Fix Chrome scrolling issues */
+.content-screen {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch; /* For smoother scrolling in iOS */
+}
+
+/* Add scrollability to content screens */
+html, body {
+  height: 100%;
+}
+
+/* Chrome-specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .content-screen {
+      overflow-y: scroll;
+  }
+  
+  .tab-content {
+      overflow-y: visible;
+  }
+}
 /* Center label with lines */
 .center-label {
   color: var(--button-green);

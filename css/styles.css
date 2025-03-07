@@ -61,7 +61,7 @@ body {
   padding: 20px;
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: 1px; /* Increase character spacing by 1px */
   text-transform: uppercase;
   cursor: pointer;
   position: relative;
@@ -201,7 +201,7 @@ body {
   padding: 15px 8px 8px 8px;
   font-size: 32px;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1px; /* Increase character spacing */
   cursor: pointer;
   transition: background-color 0.3s;
   box-shadow: 5px 5px 0 #9E8729; /* Add shadow effect */
@@ -261,7 +261,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px 0;
-  margin-bottom: 20px;
+
 }
 
 .header h1 {
@@ -286,13 +286,17 @@ body {
   margin-top: 20px;
 }
 
+.rules-menu .menu-button {
+  letter-spacing: 1px; /* Increase character spacing by 1px */
+}
+
 /* Tab Navigation Container */
 .tab-navigation {
   display: flex;
   flex-wrap: nowrap;
   background-color: var(--button-green);
   border-radius: 10px;
-  margin: 10px 0 20px;
+  margin: 10px 0 15px;
   overflow: visible;
   /* Removed sticky positioning */
   position: relative;
@@ -359,7 +363,7 @@ body {
   text-transform: uppercase;
   text-align: center;
   position: relative;
-  margin: 25px 0 15px;
+  margin: 20px 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -469,11 +473,13 @@ html, body {
   list-style: disc;
   padding-left: 20px;
   margin: 10px 0 20px;
+  font-family: 'Nunito', sans-serif; /* Add Nunito font */
 }
 
 .rules-list li {
   margin-bottom: 10px;
   color: var(--light-cream);
+  letter-spacing: 0; /* Reduce character spacing */
 }
 
 /* Table Diagram */
@@ -518,12 +524,14 @@ html, body {
   color: var(--light-cream);
   font-weight: bold;
   text-align: center;
+  font-family: 'Nunito', sans-serif;
 }
 
 .position.east {
-  right: -10px;
+  right: -70px;
   top: 50%;
   transform: translateY(-50%);
+  rotate: -90deg;
 }
 
 .position.south {
@@ -533,9 +541,10 @@ html, body {
 }
 
 .position.west {
-  left: -10px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: -40px;
+  top: 40%;
+  transform: translateY(100%);
+  rotate: 90deg;
 }
 
 .position.north {
@@ -562,6 +571,7 @@ html, body {
   color: var(--light-cream);
   font-weight: bold;
   text-align: center;
+  font-family: 'Nunito', sans-serif;
 }
 
 .tiles-row {
@@ -616,6 +626,10 @@ html, body {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
+}
+
+.tile-label {
+  font-family: 'Nunito', sans-serif;
 }
 
 /* Allow for tile images */

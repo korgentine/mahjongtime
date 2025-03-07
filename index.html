@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- PWA support -->
     <link rel="manifest" href="manifest.json">
@@ -115,14 +116,13 @@
                 <div class="table-diagram">
                     <div class="wall-container">
                         <img src="assets/images/tile-wall.svg" alt="Tile Wall" class="tile-wall">
-                        <img src="assets/images/arrow.svg" alt="Counter-clockwise" class="direction-arrow">
                     </div>
                     
                     <div class="player-positions">
-                        <div class="position east">EAST</div>
-                        <div class="position south">SOUTH</div>
-                        <div class="position west">WEST</div>
-                        <div class="position north">NORTH</div>
+                        <div class="position east">2 / S / 南 / 二 </div>
+                        <div class="position south">1 / E / 東 / 一 </div>
+                        <div class="position west">3 / N / 北 / 三</div>
+                        <div class="position north">4 / W / 西 / 四</div>
                     </div>
                 </div>
                 
@@ -167,15 +167,26 @@
             <div id="setup-rules-content" class="tab-content">
                 <div class="center-label">BUILDING</div>
                 <ul class="rules-list">
-                    <li>Each player builds a wall of 18×2 tiles</li>
-                    <li>The right side of your wall goes on the inside of the other player wall</li>
+                    <li>Each player builds a wall of 18 stacks of 2 tiles (36 total)</li>
+                    <li>The right side of your wall goes on the inside of the other player wall --I </li>
                 </ul>
                 
                 <div class="center-label">BREAKING</div>
                 <ul class="rules-list">
                     <li>Dealer (E) rolls the dice</li>
-                    <li>Count that many positions counter-clockwise starting w dealer</li>
-                    <li>Split wall at dice number starting form the inside</li>
+                    <li>Count that many positions counter-clockwise starting w dealer (1, 5, 9) </li>
+                    <li>Split that player'swall at dice number starting form the inside</li>
+                    <li>Right side is the dead wall, left if the live wall</li>
+                    <li>Dealer takes the first 4 tiles from the live wall</li>
+                    <li>Each player takes 4 tiles until all players have 12</li>
+                    <li>Everyone takes 1 more tile to get 13, dealer takes a 14th tile</li>
+                </ul>
+
+                <div class="center-label">BONUS TILES</div>
+                <ul class="rules-list">
+                    <li>Players reveal any Bonus tiles (Flowers / Seasons)</li>
+                    <li>These are placed face up in front of them</li>
+                    <li>Players draw replacement tiles from the dead wall, starting with E going counter-clockwise</li>
                 </ul>
             </div>
         </div>
@@ -369,14 +380,199 @@
             </div>
         </div>
             
-            <div id="bam-content" class="tab-content">
-                <!-- Placeholder for BAM tab content -->
-                <div class="center-label">BAM TILES (Coming Soon)</div>
+        <div id="bam-content" class="tab-content">
+            <div class="center-label">BAMBOO TILES (BAM)</div>
+            <div class="tiles-grid bam-grid">
+                <!-- Row 1: 1-3 -->
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/bam-1.svg" alt="Bamboo 1">
+                    </div>
+                    <div class="tile-label">1</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/bam-2.svg" alt="Bamboo 2">
+                    </div>
+                    <div class="tile-label">2</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/bam-3.svg" alt="Bamboo 3">
+                    </div>
+                    <div class="tile-label">3</div>
+                </div>
+                
+                <!-- Row 2: 4-6 -->
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/bam-4.svg" alt="Bamboo 4">
+                    </div>
+                    <div class="tile-label">4</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/bam-5.svg" alt="Bamboo 5">
+                    </div>
+                    <div class="tile-label">5</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/bam-6.svg" alt="Bamboo 6">
+                    </div>
+                    <div class="tile-label">6</div>
+                </div>
+                
+                <!-- Row 3: 7-9 -->
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/bam-7.svg" alt="Bamboo 7">
+                    </div>
+                    <div class="tile-label">7</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/bam-8.svg" alt="Bamboo 8">
+                    </div>
+                    <div class="tile-label">8</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/bam-9.svg" alt="Bamboo 9">
+                    </div>
+                    <div class="tile-label">9</div>
+                </div>
             </div>
+        </div>
+
+        <div id="dot-content" class="tab-content">
+            <div class="center-label">DOT TILES (DOT)</div>
+            <div class="tiles-grid dot-grid">
+                <!-- Row 1: 1-3 -->
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/dot-1.svg" alt="Dot 1">
+                    </div>
+                    <div class="tile-label">1</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/dot-2.svg" alt="Dot 2">
+                    </div>
+                    <div class="tile-label">2</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/dot-3.svg" alt="Dot 3">
+                    </div>
+                    <div class="tile-label">3</div>
+                </div>
+                
+                <!-- Row 2: 4-6 -->
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/dot-4.svg" alt="Dot 4">
+                    </div>
+                    <div class="tile-label">4</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/dot-5.svg" alt="Dot 5">
+                    </div>
+                    <div class="tile-label">5</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/dot-6.svg" alt="Dot 6">
+                    </div>
+                    <div class="tile-label">6</div>
+                </div>
+                
+                <!-- Row 3: 7-9 -->
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/dot-7.svg" alt="Dot 7">
+                    </div>
+                    <div class="tile-label">7</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/dot-8.svg" alt="Dot 8">
+                    </div>
+                    <div class="tile-label">8</div>
+                </div>
+                <div class="tile-with-label">
+                    <div class="tile-mini">
+                        <img src="assets/images/tiles/dot-9.svg" alt="Dot 9">
+                    </div>
+                    <div class="tile-label">9</div>
+                </div>
+            </div>
+        </div>
             
             <div id="dot-content" class="tab-content">
                 <!-- Placeholder for DOT tab content -->
                 <div class="center-label">DOT TILES (Coming Soon)</div>
+                <div class="tiles-grid dot-grid">
+                    <!-- Row 1: 1-3 -->
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-1.svg" alt="Character 1">
+                        </div>
+                        <div class="tile-label">1</div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-2.svg" alt="Character 2">
+                        </div>
+                        <div class="tile-label">2</div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-3.svg" alt="Character 3">
+                        </div>
+                        <div class="tile-label">3</div>
+                    </div>
+                    
+                    <!-- Row 2: 4-6 -->
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-4.svg" alt="Character 4">
+                        </div>
+                        <div class="tile-label">4</div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-5.svg" alt="Character 5">
+                        </div>
+                        <div class="tile-label">5</div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-6.svg" alt="Character 6">
+                        </div>
+                        <div class="tile-label">6</div>
+                    </div>
+                    
+                    <!-- Row 3: 7-9 -->
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-7.svg" alt="Character 7">
+                        </div>
+                        <div class="tile-label">7</div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-8.svg" alt="Character 8">
+                        </div>
+                        <div class="tile-label">8</div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-9.svg" alt="Character 9">
+                        </div>
+                        <div class="tile-label">9</div>
+                    </div>
             </div>
         </div>
         

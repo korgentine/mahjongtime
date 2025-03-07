@@ -483,25 +483,83 @@ body {
 }
 
 /* Tiles Grid for Honor, Man, etc. */
+/* Tile grid layout */
 .tiles-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  margin: 15px 0 30px;
+  margin: 20px 0 40px;
 }
 
+/* Individual tile with label */
 .tile-with-label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 
+/* Make tiles bigger and more prominent */
+.tile-mini {
+  width: 60px;
+  height: 84px;
+  background-color: var(--light-cream);
+  border-radius: 6px;
+  border: 3px solid var(--button-green);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tile labels */
 .tile-label {
   color: var(--light-cream);
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: bold;
   text-align: center;
+}
+
+/* Allow for tile images */
+.tile-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Adjust grid columns based on section */
+.center-label + .tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  max-width: 320px;
+  margin: 20px auto 40px;
+}
+
+/* Special case for 3-column grids (dragons) */
+.center-label:contains("DRAGONS") + .tiles-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Responsive adjustments */
+@media (max-width: 360px) {
+  .center-label + .tiles-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+  }
+  
+  .tile-mini {
+      width: 50px;
+      height: 70px;
+  }
+}
+
+/* Very large screens */
+@media (min-width: 600px) {
+  .tile-mini {
+      width: 70px;
+      height: 98px;
+  }
 }
 
 /* Placeholder for content still in development */

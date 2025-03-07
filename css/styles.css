@@ -300,17 +300,26 @@ body {
   margin-top: 20px;
 }
 
-/* Tab Navigation */
+/* Tab Navigation Container */
 .tab-navigation {
   display: flex;
+  flex-wrap: nowrap;
   background-color: var(--button-green);
   border-radius: 10px;
-  margin-bottom: 20px;
-  overflow: hidden;
+  margin: 10px 0 20px;
+  overflow: visible;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 
+/* Tab Buttons */
 .tab-btn {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;
   padding: 15px 5px;
   background: none;
   border: none;
@@ -319,11 +328,14 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 14px;
 }
 
+/* Active Tab */
 .tab-btn.active {
   background-color: var(--light-cream);
   color: #333;
+  position: relative;
 }
 
 /* Tab Content */
@@ -331,10 +343,60 @@ body {
   display: none;
   padding: 0 10px;
   margin-bottom: 40px;
+  width: 100%;
 }
 
 .tab-content.active {
   display: block;
+}
+
+/* For smaller screens, adjust font size */
+@media (max-width: 400px) {
+  .tab-btn {
+      font-size: 12px;
+      padding: 12px 5px;
+  }
+}
+
+/* For very small screens, use abbreviations if needed */
+@media (max-width: 320px) {
+  .tab-btn {
+      font-size: 11px;
+      padding: 10px 2px;
+  }
+}
+
+/* Center label with lines */
+.center-label {
+  color: var(--button-green);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  margin: 25px 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-label::before,
+.center-label::after {
+  content: '';
+  height: 1px;
+  background-color: var(--button-green);
+  flex-grow: 1;
+  opacity: 0.5;
+  margin: 0 15px;
+}
+
+/* Make sure tab content stays under tabs */
+.content-screen {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
 }
 
 /* Center Labels */

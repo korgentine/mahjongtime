@@ -5,7 +5,7 @@ const RulesController = {
         rules: document.getElementById('rules-screen'),
         setup: document.getElementById('setup-screen'),
         tiles: document.getElementById('tiles-screen'),
-        playingRules: document.getElementById('playing-rules-screen'),
+        gameplay: document.getElementById('gameplay-screen'),
         winningHand: document.getElementById('winning-hand-screen')
     },
     
@@ -17,13 +17,13 @@ const RulesController = {
         // Rules menu buttons
         setup: document.getElementById('setup-btn'),
         tiles: document.getElementById('tiles-btn'),
-        playingRules: document.getElementById('playing-rules-btn'),
+        gameplay: document.getElementById('gameplay-btn'),
         winningHand: document.getElementById('winning-hand-btn'),
         
         // Close buttons for each section
         closeSetup: document.getElementById('close-setup'),
         closeTiles: document.getElementById('close-tiles'),
-        closePlayingRules: document.getElementById('close-playing-rules'),
+        closeGameplay: document.getElementById('close-gameplay'),
         closeWinningHand: document.getElementById('close-winning-hand')
     },
     
@@ -43,7 +43,13 @@ const RulesController = {
         honorContent: document.getElementById('honor-content'),
         manContent: document.getElementById('man-content'),
         bamContent: document.getElementById('bam-content'),
-        dotContent: document.getElementById('dot-content')
+        dotContent: document.getElementById('dot-content'),
+        
+        // Gameplay tabs
+        diagramGameplayTab: document.getElementById('diagram-gameplay-tab'),
+        meldsGameplayTab: document.getElementById('melds-gameplay-tab'),
+        diagramGameplayContent: document.getElementById('diagram-gameplay-content'),
+        meldsGameplayContent: document.getElementById('melds-gameplay-content')
     },
     
     // Initialize the rules controller
@@ -86,9 +92,9 @@ const RulesController = {
             });
         }
         
-        if (this.buttons.playingRules) {
-            this.buttons.playingRules.addEventListener('click', () => {
-                this.showScreen('playingRules');
+        if (this.buttons.gameplay) {
+            this.buttons.gameplay.addEventListener('click', () => {
+                this.showScreen('gameplay');
             });
         }
         
@@ -111,8 +117,8 @@ const RulesController = {
             });
         }
         
-        if (this.buttons.closePlayingRules) {
-            this.buttons.closePlayingRules.addEventListener('click', () => {
+        if (this.buttons.closeGameplay) {
+            this.buttons.closeGameplay.addEventListener('click', () => {
                 this.showScreen('rules');
             });
         }
@@ -160,6 +166,19 @@ const RulesController = {
                 this.setActiveTab('dot');
             });
         }
+        
+        // Gameplay tabs
+        if (this.tabs.diagramGameplayTab) {
+            this.tabs.diagramGameplayTab.addEventListener('click', () => {
+                this.setActiveTab('diagramGameplay');
+            });
+        }
+        
+        if (this.tabs.meldsGameplayTab) {
+            this.tabs.meldsGameplayTab.addEventListener('click', () => {
+                this.setActiveTab('meldsGameplay');
+            });
+        }
     },
     
     // Show a specific screen and hide others
@@ -167,15 +186,31 @@ const RulesController = {
         console.log('Showing screen:', screenName);
         this.hideAllScreens();
         
-        // Show the selected screen
         if (this.screens[screenName]) {
-            this.screens[screenName].style.display = 'flex';
+            const screen = this.screens[screenName];
+            screen.style.display = 'flex';
             
-            // For screens with tabs, ensure a tab is active
-            if (screenName === 'setup') {
-                this.setActiveTab('setupDiagram');
-            } else if (screenName === 'tiles') {
-                this.setActiveTab('honor');
+            // Initialize tabs based on screen
+            switch(screenName) {
+                case 'setup':
+                    console.log('Setting up Setup screen tabs');
+                    this.setActiveTab('setupDiagram');
+                    break;
+                case 'tiles':
+                    console.log('Setting up Tiles screen tabs');
+                    this.setActiveTab('honor');
+                    break;
+                case 'gameplay':
+                    console.log('Setting up Gameplay screen tabs');
+                    this.setActiveTab('meldsGameplay');  // Changed to show melds first
+                    break;
+                case 'winningHand':
+                    // Handle placeholder content
+                    const placeholder = screen.querySelector('.content-placeholder');
+                    if (placeholder) {
+                        placeholder.style.display = 'block';
+                    }
+                    break;
             }
         } else {
             console.error('Screen not found:', screenName);
@@ -231,6 +266,19 @@ const RulesController = {
         } else if (tabName === 'dot') {
             if (this.tabs.dotTab) this.tabs.dotTab.classList.add('active');
             if (this.tabs.dotContent) this.tabs.dotContent.classList.add('active');
+        }
+        
+        // Gameplay tabs
+        if (tabName === 'diagramGameplay') {
+            if (this.tabs.diagramGameplayTab) this.tabs.diagramGameplayTab.classList.add('active');
+            if (this.tabs.meldsGameplayTab) this.tabs.meldsGameplayTab.classList.remove('active');
+            if (this.tabs.diagramGameplayContent) this.tabs.diagramGameplayContent.classList.add('active');
+            if (this.tabs.meldsGameplayContent) this.tabs.meldsGameplayContent.classList.remove('active');
+        } else if (tabName === 'meldsGameplay') {
+            if (this.tabs.diagramGameplayTab) this.tabs.diagramGameplayTab.classList.remove('active');
+            if (this.tabs.meldsGameplayTab) this.tabs.meldsGameplayTab.classList.add('active');
+            if (this.tabs.diagramGameplayContent) this.tabs.diagramGameplayContent.classList.remove('active');
+            if (this.tabs.meldsGameplayContent) this.tabs.meldsGameplayContent.classList.add('active');
         }
     }
 };

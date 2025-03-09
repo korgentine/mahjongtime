@@ -89,8 +89,8 @@
                 <button id="tiles-btn" class="menu-button active">
                     MAHJONG TILES
                 </button>
-                <button id="playing-rules-btn" class="menu-button active">
-                    PLAYING RULES
+                <button id="gameplay-btn" class="menu-button active">
+                    GAMEPLAY
                 </button>
                 <button id="winning-hand-btn" class="menu-button active">
                     WINNING HAND / SCORING
@@ -509,83 +509,156 @@
                 </div>
             </div>
         </div>
-            
-            <div id="dot-content" class="tab-content">
-                <!-- Placeholder for DOT tab content -->
-                <div class="center-label">DOT TILES (Coming Soon)</div>
-                <div class="tiles-grid dot-grid">
-                    <!-- Row 1: 1-3 -->
-                    <div class="tile-with-label">
-                        <div class="tile-mini">
-                            <img src="assets/images/tiles/man-1.svg" alt="Character 1">
-                        </div>
-                        <div class="tile-label">1</div>
-                    </div>
-                    <div class="tile-with-label">
-                        <div class="tile-mini">
-                            <img src="assets/images/tiles/man-2.svg" alt="Character 2">
-                        </div>
-                        <div class="tile-label">2</div>
-                    </div>
-                    <div class="tile-with-label">
-                        <div class="tile-mini">
-                            <img src="assets/images/tiles/man-3.svg" alt="Character 3">
-                        </div>
-                        <div class="tile-label">3</div>
-                    </div>
-                    
-                    <!-- Row 2: 4-6 -->
-                    <div class="tile-with-label">
-                        <div class="tile-mini">
-                            <img src="assets/images/tiles/man-4.svg" alt="Character 4">
-                        </div>
-                        <div class="tile-label">4</div>
-                    </div>
-                    <div class="tile-with-label">
-                        <div class="tile-mini">
-                            <img src="assets/images/tiles/man-5.svg" alt="Character 5">
-                        </div>
-                        <div class="tile-label">5</div>
-                    </div>
-                    <div class="tile-with-label">
-                        <div class="tile-mini">
-                            <img src="assets/images/tiles/man-6.svg" alt="Character 6">
-                        </div>
-                        <div class="tile-label">6</div>
-                    </div>
-                    
-                    <!-- Row 3: 7-9 -->
-                    <div class="tile-with-label">
-                        <div class="tile-mini">
-                            <img src="assets/images/tiles/man-7.svg" alt="Character 7">
-                        </div>
-                        <div class="tile-label">7</div>
-                    </div>
-                    <div class="tile-with-label">
-                        <div class="tile-mini">
-                            <img src="assets/images/tiles/man-8.svg" alt="Character 8">
-                        </div>
-                        <div class="tile-label">8</div>
-                    </div>
-                    <div class="tile-with-label">
-                        <div class="tile-mini">
-                            <img src="assets/images/tiles/man-9.svg" alt="Character 9">
-                        </div>
-                        <div class="tile-label">9</div>
-                    </div>
-            </div>
         </div>
         
-        <!-- Playing Rules Screen -->
-        <div id="playing-rules-screen" class="content-screen">
+        <!-- Gameplay Rules Screen -->
+        <div id="gameplay-screen" class="content-screen">
             <div class="header">
-                <button id="close-playing-rules" class="close-btn">←</button>
-                <h1>PLAYING RULES</h1>
+                <button id="close-gameplay" class="close-btn">←</button>
+                <h1>GAMEPLAY</h1>
             </div>
             
-            <div class="content-placeholder">
-                <div class="center-label">PLAYING RULES CONTENT</div>
-                <p>Detailed playing rules will be added here.</p>
+            <div class="tab-navigation">
+                <button id="melds-gameplay-tab" class="tab-btn active">MELDS</button>
+                <button id="diagram-gameplay-tab" class="tab-btn">RULES</button>
+            </div>
+            
+            <div id="melds-gameplay-content" class="tab-content active">
+                <div class="center-label">PONG</div>
+                <div class="tiles-grid special-grid">
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-5.svg" alt="Man 5">
+                        </div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-5.svg" alt="Man 5">
+                        </div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/man-5.svg" alt="Man 5">
+                        </div>
+                    </div>
+                </div>
+                <ul class="rules-list">
+                    <li>3 of a kind</li>
+                    <li>Can be completed with tiles from the wall or the latest discarded tile from ANY player</li>
+                </ul>
+                
+                <div class="center-label">KONG</div>
+                <div class="tiles-grid special-grid">
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/dot-6.svg" alt="Dot 6">
+                        </div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/dot-6.svg" alt="Dot 6">
+                        </div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/dot-6.svg" alt="Dot 6">
+                        </div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/dot-6.svg" alt="Dot 6">
+                        </div>
+                    </div>
+                </div>
+                <ul class="rules-list">
+                    <li>4 of a kind</li>
+                    <li>Can be completed with tiles from the wall or the latest discarded tile from ANY player</li>
+                </ul>
+                
+                <div class="center-label">CHI</div>
+                <div class="tiles-grid special-grid">
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/bam-3.svg" alt="Bamboo 3">
+                        </div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/bam-4.svg" alt="Bamboo 4">
+                        </div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/bam-5.svg" alt="Bamboo 5">
+                        </div>
+                    </div>
+                </div>
+                <ul class="rules-list">
+                    <li>3 sequential of the same suit</li>
+                    <li>Can be completed with tiles from the wall or the latest discarded tile from the player from your left</li>
+                </ul>
+                
+                <div class="center-label">EYES</div>
+                <div class="tiles-grid special-grid">
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/east-wind.svg" alt="East Wind">
+                        </div>
+                    </div>
+                    <div class="tile-with-label">
+                        <div class="tile-mini">
+                            <img src="assets/images/tiles/east-wind.svg" alt="East Wind">
+                        </div>
+                    </div>
+                </div>
+                <ul class="rules-list">
+                    <li>2 of a kind</li>
+                    <li>Can be completed with tiles from the wall or the latest discarded tile from any player only if you're also declaring Mahjong</li>
+                </ul>
+            </div>
+            
+            <div id="diagram-gameplay-content" class="tab-content">
+                <div class="center-label">START</div>
+                <ul class="rules-list">
+                    <li>East goes first discarding a tile</li>
+                    <li>Play goes counterclockwise</li>
+                </ul>
+                
+                <div class="center-label">TURN</div>
+                <p class="rules-text">On a player's turn, they:</p>
+                <ul class="rules-list">
+                    <li>Draw a tile from the wall</li>
+                    <li>Check if they can declare a win</li>
+                    <li>If not winning, discard one tile face up in the center</li>
+                    <li>Other players may claim the discarded tile under certain conditions</li>
+                </ul>
+                
+                <div class="center-label">DRAW</div>
+                <ul class="rules-list">
+                    <li>Tiles are drawn from the open end of the wall</li>
+                    <li>The wall is consumed clockwise, starting from the break</li>
+                    <li>Each player takes one tile per turn unless claiming a discard</li>
+                    <li>If player draws a flower/season they draw again from the dead wall</li>
+                </ul>
+                
+                <div class="center-label">DISCARD</div>
+                <ul class="rules-list">
+                    <li>Discards are placed face up in the center</li>
+                    <li>Once a tile is fully released from the hand, it cannot be taken back</li>
+                </ul>
+                
+                <div class="center-label">GOAL</div>
+                <p class="rules-text">A complete winning hand consists of 14 tiles arranged as:</p>
+                <ul class="rules-list">
+                    <li>Four sets of three tiles each (either Pongs or Chows)</li>
+                    <li>One pair (two identical tiles)</li>
+                </ul>
+                
+                <div class="center-label">OTHER</div>
+                <ul class="rules-list">
+                    <li>Turn always ends with 13 tiles (until win)</li>
+                    <li>Win > Pong / Kong > Chi</li>
+                </ul>
             </div>
         </div>
         
@@ -602,6 +675,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Load scripts -->
     <script src="js/tiles.js"></script>

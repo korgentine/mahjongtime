@@ -646,6 +646,7 @@ html, body {
 /* Fix for 100vh issue on iOS Safari */
 :root {
   --vh: 1vh;
+<<<<<<< HEAD
 }
 
 /* Mobile scrolling fixes */
@@ -719,4 +720,6 @@ html, body {
 /* Make internal elements scrollable */
 .tiles-grid, .rules-list {
   -webkit-overflow-scrolling: touch;
+=======
+>>>>>>> parent of e2ac836 (mobile scroll)
 }

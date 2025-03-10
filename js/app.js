@@ -138,32 +138,3 @@ function setVH() {
 window.addEventListener('resize', setVH);
 window.addEventListener('orientationchange', setVH);
 setVH();
-
-// Fix for mobile scrolling
-document.addEventListener('DOMContentLoaded', function() {
-    // Enable touch scrolling on all content screens
-    const contentScreens = document.querySelectorAll('.content-screen');
-    
-    contentScreens.forEach(screen => {
-        // Set proper overflow
-        screen.style.overflowY = 'auto';
-        screen.style.WebkitOverflowScrolling = 'touch';
-        
-        // Prevent default touch behavior only when necessary
-        screen.addEventListener('touchmove', function(e) {
-            // Allow scrolling by default
-            e.stopPropagation();
-        }, { passive: true });
-    });
-    
-    // Set viewport height correctly for mobile
-    function setVH() {
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
-    
-    // Set on load and resize
-    window.addEventListener('resize', setVH);
-    window.addEventListener('orientationchange', setVH);
-    setVH();
-});

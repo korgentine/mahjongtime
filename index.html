@@ -697,5 +697,34 @@
             });
         }
     </script>
+
+    <!-- Mobile scrolling fix script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Enable scrolling for all content screens
+        const contentScreens = document.querySelectorAll('.content-screen');
+        
+        contentScreens.forEach(screen => {
+            // Make sure the screen is properly set for scrolling
+            screen.style.height = 'auto';
+            screen.style.maxHeight = '100%';
+            screen.style.overflowY = 'scroll';
+            screen.style.WebkitOverflowScrolling = 'touch';
+            
+            // Prevent default touch behavior only on non-scrollable elements
+            screen.addEventListener('touchmove', function(e) {
+            e.stopPropagation();
+            }, { passive: true });
+        });
+        
+        // Disable pull-to-refresh
+        document.body.addEventListener('touchmove', function(e) {
+            if (e.target.closest('.content-screen')) {
+            return; // Allow scrolling inside content screens
+            }
+            e.preventDefault(); // Prevent body scrolling
+        }, { passive: false });
+        });
+    </script>
 </body>
 </html>
